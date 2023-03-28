@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "All Products";
+}
+
+<h1>All Products</h1>
+
+<div class="card">
+    <div class="card-header">
+        @if (User.IsInRole("adamin"))
+        {
+            <a asp-action="CreateProduct" asp-controller="Product" class="btn btn-primary">Create New Product</a>
+        }
+        else
+        {
+            <h3>Products Name</h3>
+        }
+    </div>
+    <div class="card-body">
+        @foreach (var pro in Model)
+        {
+            <div class="d-flex justify-content-between">
+                <div>@pro.ProductName</div>
+                <div>@pro.Category.CategoryName</div>
+                <div>
+                    @if (User.IsInRole("adamin"))
+                    {
+                        <a asp-route-id="@pro.ProductId" asp-action="EditProduct" asp-controller="Product" class="btn btn-outline-secondary btn-sm">Edit</a>
+                        <a asp-route-id="@pro.ProductId" asp-action="DeleteProduct" asp-controller="Product" class="btn btn-outline-danger btn-sm">Delete</a>
+                    }
+                    <a asp-route-id="@pro.ProductId" asp-action="DetailsProduct" asp-controller="Product" class="btn btn-outline-info btn-sm">Details</a>
+                </div>
+            </div>
+            <hr />
+        }
+    </div>
+    <div class="card-footer">
+        <a asp-action="Index" asp-controller="Home" class="btn btn-warning">Back To Home</a>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+﻿@model NextwoIdentity2023.Models.ViewModel.Product
+
+@{
+    ViewData["Title"] = "DeleteProduct";
+}
+
+<h1>Delete Product</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <form asp-action="DeleteProduct">
+        <input type="hidden" asp-for="ProductId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> 
+    </form>
+    <a asp-action="AllProducts" asp-controller="Product" class="btn btn-info">Cancel</a>
+</div>
