@@ -21,18 +21,24 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                         @if (signInManager.IsSignedIn(User))
+                        {
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="AllProducts">Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="AllCategorys">Categories</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-info text-white" asp-area="" asp-controller="Product" asp-action="AllProducts">Products</a>
+                            </li>
+                            @if (User.IsInRole("adamin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link btn btn-info text-white ms-1" asp-area="" asp-controller="Category" asp-action="AllCategorys">Categories</a>
+                                </li>
+                            }
+                        }
                     </ul>
                     <ul class="navbar-nav flex-grow-1">
                         @if (signInManager.IsSignedIn(User))
@@ -45,20 +51,19 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="RolesList">
-                                        Role 
+                                    <a class="nav-link btn btn-primary text-white" asp-area="" asp-controller="Account" asp-action="RolesList">
+                                        Role
                                     </a>
                                 </li>
-
                             }
                             else
                             {
-                            <li class="nav-item">
+                                <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">
-                                    Logout @User.Identity!.Name
-                                </a>
-                            </li>
-                                
+                                        Logout @User.Identity!.Name
+                                    </a>
+                                </li>
+
                             }
                         }
                         else

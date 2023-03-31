@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NextwoIdentity2023.Data;
@@ -6,6 +7,7 @@ using NextwoIdentity2023.Models.ViewModel;
 
 namespace NextwoIdentity2023.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
 
     {

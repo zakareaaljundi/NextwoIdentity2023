@@ -1,27 +1,27 @@
 ﻿@model NextwoIdentity2023.Models.ViewModel.Category
 
 @{
-    ViewData["Title"] = "CreateCategory";
+    ViewData["Title"] = "EditCategory";
 }
 
-<h1>Create Category</h1>
+<h1>Edit Category</h1>
 
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateCategory">
+        <form asp-action="EditCategory">
             <div asp-validation-summary="All" class="text-danger"></div>
+            <input type="hidden" asp-for="CategoryId" />
             <div class="form-group">
                 <label asp-for="CategoryName" class="control-label"></label>
                 <input asp-for="CategoryName" class="form-control" />
                 <span asp-validation-for="CategoryName" class="text-danger"></span>
             </div><br /><br />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
                 <a asp-action="AllCategorys" asp-controller="Category" class="btn btn-warning">Cancel</a>
             </div>
         </form>
     </div>
 </div>
-
 
